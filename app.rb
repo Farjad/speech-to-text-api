@@ -5,7 +5,6 @@ require 'sucker_punch'
 require 'rest-client'
 require_relative 'workers/speech_to_text_worker'
 
-require 'pry'
 
 class App < Sinatra::Application
 	helpers do

@@ -7,10 +7,6 @@ class BluemixService
 		@api = api
 	end
 
-	def set_file(file)
-		@file = file
-	end
-
 	def call
 		speech_to_text
 	end
@@ -20,7 +16,7 @@ class BluemixService
 	def speech_to_text
 		response = RestClient.post(api + '/v1/recognize?model=' + model, file, :content_type => content_type)
 		if response.code == 200
-			JSON.parse(response)
+			JSON.parse(response.body)
 		else
 			raise
 		end
