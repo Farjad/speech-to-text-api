@@ -7,7 +7,13 @@ class FileService
 
   def call
     @file_name = 'temp/' + SecureRandom.uuid + Pathname(url).extname
-    response = RestClient.get(url)
+
+    begin
+      response = RestClient.get(url)
+    rescue
+      raise
+    end
+
     File.write(file_name, response.body)
     File.new(file_name)
   end
